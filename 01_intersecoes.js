@@ -50,6 +50,13 @@ function searchRepeated(firstArray, secondArray) {
 
   // hash tbm eh usado pq funciona mesmo que tamanhos dos arrays seja diferente
 
+  /*
+    hash melhor tbm pois usando no lugar de p.ex. for's
+    aninhados, reduz complex. tempo de O(n^2) para
+    O(2n) = O(n). caso entrada fosse muito grande a
+    diferenca seria notada logo
+  */
+
   for (let i = 0; i < firstArray.length; i++) {
     let element1 = firstArray[i];
     if (!hashTable[element1]) {
