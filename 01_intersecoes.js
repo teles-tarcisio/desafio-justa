@@ -6,7 +6,7 @@ Entrada: ["1, 3, 9, 10, 17, 18", "1, 4, 9, 10"]
 Saída: 1,9,10
 */
 
-function stringsToNumbers(inputArray) {
+function stringsToNumbers(inputArray) { // funcao auxiliar
   // variavel contera o array de numeros obtidos a partir do array de entrada
   const arrayOfNumbers = []; 
   
@@ -18,7 +18,7 @@ function stringsToNumbers(inputArray) {
   return arrayOfNumbers;
 }
 
-function searchRepeated(stringList) {
+function searchRepeated(stringList) { // funcao principal
   /*
     Admitindo que nenhum elemento do array de entrada seja uma string vazia,
     e que nos elementos do array cada numero esteja separado por "," (virgula) 
@@ -28,7 +28,7 @@ function searchRepeated(stringList) {
   const numericStrings0 = stringList[0].split(",");
   const numericStrings1 = stringList[1].split(",");
 
-  // Convertendo arrays de strings em arrays de numeros, com a funcao declarada mais acima no codigo:
+  // Convertendo arrays de strings em arrays de numeros, com a funcao auxiliar declarada mais acima no codigo:
   const numbersList0 = stringsToNumbers(numericStrings0);
   const numbersList1 = stringsToNumbers(numericStrings1);
 
@@ -68,10 +68,13 @@ function searchRepeated(stringList) {
 
 
 const inputA = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
+console.log("Entrada A: ", inputA);
 console.log("Saida A: ", searchRepeated(inputA));
 
 const inputB = ["1, 3, 9, 10, 17, 18", "1, 4, 9, 10"];
+console.log("Entrada B: ", inputB);
 console.log("Saida B: ", searchRepeated(inputB));
 
 const inputC = ["-3, -2, 0, 5, 8, 11", "-3, -1, 0, 3, 4, 5, 6, 7, 9, 11, 15"];
+console.log("Entrada C: ", inputC);
 console.log("Saida C: ", searchRepeated(inputC));

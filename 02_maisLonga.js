@@ -13,41 +13,58 @@ As palavras também podem conter números, mas somente as letras serão consider
 Ignore as pontuações e a situação em que a String será vazia!!!
 */
 
-
-
 function findLongestWord(inputString) {
-  console.log("entrada pura: ", inputString);
+  /*
+    Para tratar a string de entrada, uso um replace com expressao regular para
+    capturar todos os numeros da string de entrada e substitui-los por
+    caractere vazio "" :
+  */
+  const stringWithoutNumbers = inputString.replace(/\d/g, "");
+    
+  /*
+    A seguir, a nova string que nao contem os numeros eh convertida para
+    um array de strings, admitindo que as palavras estejam separadas por
+    espaco em branco " ", ja que o enunciado permite ignorar pontuacoes:
+  */
+  const wordsArray = stringWithoutNumbers.split(" ");
+      
+  /*
+    Inicialmente defino que a primeira palavra obtida (que aqui eh
+    o primeiro elemento do array construido), eh a mais longa:
+  */
+  let longestWord = wordsArray[0];
   
   /*
-    replace com regex para remover todos os numeros:
-    /\d/g --> somente digitos
-    /[^\d]/g --> tudo exceto digitos
+    Iterando pelo array a partir do 2o elemento (2a palavra), caso a palavra
+    conferida atualmente seja mais longa que a 'mais longa anteriormente',
+    a variavel longestWord eh atualizada com a 'nova palavra mais longa':
   */
-
-  const stringWithoutNumbers = inputString.replace(/\d/g, "");
-  console.log("sem numeros: ", stringWithoutNumbers);
-
-
-  const stringToArray = stringWithoutNumbers.split(" ");
-  console.log("array: ", stringToArray);
-
-  let longestWord = stringToArray[0];
-  
-  for (let i = 1; i < stringToArray.length; i++) {
-    if (stringToArray[i].length > longestWord.length) {
-      longestWord = stringToArray[i];
+  for (let i = 1; i < wordsArray.length; i++) {
+    let actualWord = wordsArray[i];
+    if (actualWord.length > longestWord.length) {
+      longestWord = actualWord;
     }
   }
 
   return longestWord;
 }
 
-const teste0 = "Hello world123 567 pont u ação !?[{ ;:^% $*-+ 123world456";
+const test0 = "Hello world123 567";
 
-const teste1 = "Justa é a fintech que mais cresce no Brasil";
+const test1 = "Justa é a fintech que mais cresce no Brasil";
 
-const teste2 = "Justino é o mascote da Justa";
+const test2 = "Justino é o mascote da Justa";
 
-console.log(findLongestWord(teste0));
-console.log(findLongestWord(teste1));
-console.log(findLongestWord(teste2));
+const test3 = "0012Hello world123 567 acên tüàção !?[{/| ;.^% 1234world5678";
+
+console.log("Entrada: ", test0);
+console.log("Saida: ", findLongestWord(test0));
+
+console.log("Entrada: ", test1);
+console.log("Saida: ", findLongestWord(test1));
+
+console.log("Entrada: ", test2);
+console.log("Saida: ", findLongestWord(test2));
+
+console.log("Entrada: ", test3);
+console.log("Saida: ", findLongestWord(test3));
